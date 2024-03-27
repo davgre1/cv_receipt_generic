@@ -192,10 +192,10 @@ def image_vectorization_many_easyocr():
     
 
 def image_to_text_layout():
-    d = pytesseract.image_to_data(Image.open("./cv_receipt_generic_v2/incoming_images/eng_invoice.png"), config=r'-l eng --oem 1 --psm 6', output_type=Output.DICT)
+    d = pytesseract.image_to_data(Image.open("./cv_receipt_generic/incoming_images/IMG_1292.jpg"), config=r'-l eng --oem 3 --psm 6', output_type=Output.DICT)
     df = pd.DataFrame(d)
-    df = df.head(25)
-    print(df)
+    df = df.head(55)
+    # print(df)
 
     # out = pytesseract.image_to_pdf_or_hocr(Image.open("./cv_receipt_generic_v2/incoming_images/eng_invoice.png"), config=r'-l eng --oem 1 --psm 11 hocr')
     # f = open("./cv_receipt_generic_v2/final_images/demofile.pdf", "w+b")
@@ -337,9 +337,6 @@ def image_cropper():
 
 
 if __name__ == "__main__":
-    
-    pytesseract.pytesseract.tesseract_cmd = r'C:/Program Files/Tesseract-OCR/tesseract.exe'
-
     start_time = time()
-    generic_dilate_img()
+    image_to_text_layout()
     print("--- %s sec ---" % (time()-start_time))
